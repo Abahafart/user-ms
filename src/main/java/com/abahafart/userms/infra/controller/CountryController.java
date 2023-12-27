@@ -1,13 +1,12 @@
 package com.abahafart.userms.infra.controller;
 
-import java.util.List;
-import java.util.Map;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abahafart.userms.domain.model.CountryDO;
@@ -19,6 +18,7 @@ import com.abahafart.userms.infra.mapper.GeneralMapper;
 @RestController
 @RequestMapping(value = "/countries")
 public class CountryController {
+  public static final Logger log =  LoggerFactory.getLogger(CountryController.class);
   private final CountryService countryService;
   private final GeneralMapper generalMapper;
 
@@ -29,13 +29,14 @@ public class CountryController {
 
   @PostMapping
   public CountryResponse createCountry(@RequestBody CountryRequest request) {
+    log.info("Request received {}", request);
     CountryDO countryDO = generalMapper.fromCountryRequest(request);
     return generalMapper.fromCountryDO(countryService.create(countryDO));
   }
 
-  @GetMapping
-  public List<CountryResponse> findAllRecords(@RequestParam Map<String, Object> filters) {
-    List<CountryDO> countryList = countryService.findAll(filters);
-    return countryList.stream().map(generalMapper::fromCountryDO).toList();
+  @GetMapping("{id}")
+  public CountryResponse getById(@PathVariable Long id) {
+    log.info("Country to find with id {}", id);
+    return generalMapper.fromCountryDO(countryService.getById(id));
   }
 }

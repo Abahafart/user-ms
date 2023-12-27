@@ -1,8 +1,6 @@
 package com.abahafart.userms.infra.repository;
 
 import java.time.Instant;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -32,12 +30,7 @@ public class CountryRepositoryImpl implements CountryRepository {
   }
 
   @Override
-  public List<CountryDO> findAllRecords(Map<String, Object> filters) {
-    return null;
-  }
-
-  @Override
   public CountryDO getById(Long id) {
-    return null;
+    return generalMapper.fromCountryEntity(countryJPARepository.findById(id).get());
   }
 }

@@ -1,8 +1,5 @@
 package com.abahafart.userms.domain.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
 import com.abahafart.userms.domain.model.CountryDO;
@@ -24,12 +21,7 @@ public class CountryServiceImpl implements CountryService {
   }
 
   @Override
-  public List<CountryDO> findAll(Map<String, Object> filters) {
-    return null;
-  }
-
-  @Override
   public CountryDO getById(Long id) {
-    return null;
+    return countryRepository.getById(id);
   }
 }
