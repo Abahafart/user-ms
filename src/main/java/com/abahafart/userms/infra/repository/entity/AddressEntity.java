@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name = "tbl_address")
 public class AddressEntity {
@@ -19,8 +21,12 @@ public class AddressEntity {
   private String state;
   private String zipCode;
   private Instant createdAt;
-  private long idPerson;
-  private long idCountry;
+  @ManyToOne
+  @JoinColumn(name = "person_id")
+  private PersonEntity person;
+  @ManyToOne
+  @JoinColumn(name = "country_id")
+  private CountryEntity country;
 
   public Long getId() {
     return id;
@@ -86,19 +92,19 @@ public class AddressEntity {
     this.createdAt = createdAt;
   }
 
-  public long getIdPerson() {
-    return idPerson;
+  public PersonEntity getPerson() {
+    return person;
   }
 
-  public void setIdPerson(long idPerson) {
-    this.idPerson = idPerson;
+  public void setPerson(PersonEntity person) {
+    this.person = person;
   }
 
-  public long getIdCountry() {
-    return idCountry;
+  public CountryEntity getCountry() {
+    return country;
   }
 
-  public void setIdCountry(long idCountry) {
-    this.idCountry = idCountry;
+  public void setCountry(CountryEntity country) {
+    this.country = country;
   }
 }

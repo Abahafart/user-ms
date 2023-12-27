@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity(name = "tbl_user")
 public class UserEntity {
@@ -18,8 +20,12 @@ public class UserEntity {
   private String email;
   private Instant createdAt;
   private Instant updatedAt;
-  private long idStatus;
-  private long idPerson;
+  @ManyToOne
+  @JoinColumn(name = "status_id")
+  private StatusEntity status;
+  @ManyToOne
+  @JoinColumn(name = "person_id")
+  private PersonEntity person;
 
   public long getId() {
     return id;
@@ -69,19 +75,19 @@ public class UserEntity {
     this.updatedAt = updatedAt;
   }
 
-  public long getIdStatus() {
-    return idStatus;
+  public StatusEntity getStatus() {
+    return status;
   }
 
-  public void setIdStatus(long idStatus) {
-    this.idStatus = idStatus;
+  public void setStatus(StatusEntity status) {
+    this.status = status;
   }
 
-  public long getIdPerson() {
-    return idPerson;
+  public PersonEntity getPerson() {
+    return person;
   }
 
-  public void setIdPerson(long idPerson) {
-    this.idPerson = idPerson;
+  public void setPerson(PersonEntity person) {
+    this.person = person;
   }
 }
