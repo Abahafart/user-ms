@@ -1,9 +1,12 @@
 package com.abahafart.userms.infra.repository;
 
 import java.time.Instant;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.abahafart.userms.domain.exceptions.Error;
+import com.abahafart.userms.domain.exceptions.ResourceNotFoundException;
 import com.abahafart.userms.domain.model.CountryDO;
 import com.abahafart.userms.domain.repository.CountryRepository;
 import com.abahafart.userms.infra.mapper.GeneralMapper;
@@ -31,6 +34,8 @@ public class CountryRepositoryImpl implements CountryRepository {
 
   @Override
   public CountryDO getById(Long id) {
-    return generalMapper.fromCountryEntity(countryJPARepository.findById(id).get());
+    return generalMapper.fromCountryEntity(
+        countryJPARepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
+            List.of(new Error(String.format("Country with id %s nto found", id), -1)))));
   }
 }
