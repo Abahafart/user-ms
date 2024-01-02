@@ -5,4 +5,5 @@ import com.abahafart.userms.domain.model.PersonDO;
 public interface PersonService {
 
   PersonDO create(PersonDO personDO);
+  PersonDO getById(Long id);
 }
