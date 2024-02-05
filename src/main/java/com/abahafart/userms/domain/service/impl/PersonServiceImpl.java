@@ -4,15 +4,18 @@ import org.springframework.stereotype.Service;
 
 import com.abahafart.userms.domain.model.PersonDO;
 import com.abahafart.userms.domain.repository.PersonRepository;
+import com.abahafart.userms.domain.service.AddressService;
 import com.abahafart.userms.domain.service.PersonService;
 
 @Service
 public class PersonServiceImpl implements PersonService {
 
   private final PersonRepository personRepository;
+  private final AddressService addressService;
 
-  public PersonServiceImpl(PersonRepository personRepository) {
+  public PersonServiceImpl(PersonRepository personRepository, AddressService addressService) {
     this.personRepository = personRepository;
+    this.addressService = addressService;
   }
 
   @Override

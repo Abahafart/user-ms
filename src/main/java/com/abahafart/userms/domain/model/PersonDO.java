@@ -12,6 +12,7 @@ public class PersonDO {
   private LocalDate birthDate;
   private Instant createdAt;
   private Instant updatedAt;
+  private AddressDO address;
 
   public Long getId() {
     return id;
@@ -67,5 +68,13 @@ public class PersonDO {
 
   public void setUpdatedAt(Instant updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public AddressDO getAddress() {
+    return address;
+  }
+
+  public void setAddress(AddressDO address) {
+    this.address = address;
   }
 }

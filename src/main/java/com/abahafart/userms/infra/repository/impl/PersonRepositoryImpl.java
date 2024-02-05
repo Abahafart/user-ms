@@ -1,4 +1,4 @@
-package com.abahafart.userms.infra.repository;
+package com.abahafart.userms.infra.repository.impl;
 
 import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.COUNTRY_NOT_FOUND;
 import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND_CODE;
@@ -13,6 +13,7 @@ import com.abahafart.userms.domain.exceptions.ResourceNotFoundException;
 import com.abahafart.userms.domain.model.PersonDO;
 import com.abahafart.userms.domain.repository.PersonRepository;
 import com.abahafart.userms.infra.mapper.GeneralMapper;
+import com.abahafart.userms.infra.repository.PersonJPARepository;
 import com.abahafart.userms.infra.repository.entity.PersonEntity;
 
 @Repository
