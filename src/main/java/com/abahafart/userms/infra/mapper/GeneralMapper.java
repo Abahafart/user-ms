@@ -1,6 +1,7 @@
 package com.abahafart.userms.infra.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.abahafart.userms.domain.model.AddressDO;
 import com.abahafart.userms.domain.model.CountryDO;
@@ -23,8 +24,10 @@ public interface GeneralMapper {
   CountryDO fromCountryEntity(CountryEntity entity);
   CountryEntity toEntityFromCountryDO(CountryDO countryDO);
   PersonEntity fromPersonDO(PersonDO personDO);
+  @Mapping(source = "addressEntities", target = "addressList" )
   PersonDO fromPersonEntity(PersonEntity entity);
   PersonDO fromPersonRequest(PersonRequest request);
+  @Mapping( source = "addressList", target = "addressResponses")
   PersonResponse fromPersonDOToResponse(PersonDO personDO);
   AddressEntity fromAddressModel(AddressDO addressDO);
   AddressDO fromAddressEntity(AddressEntity entity);

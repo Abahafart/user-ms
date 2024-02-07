@@ -3,8 +3,11 @@ package com.abahafart.userms.infra.repository.entity;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,8 +25,8 @@ public class PersonEntity {
   private LocalDate birthDate;
   private Instant createdAt;
   private Instant updatedAt;
-  @OneToMany(mappedBy = "id")
-  private List<AddressEntity> addressEntities;
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL)
+  private Set<AddressEntity> addressEntities;
 
   public Long getId() {
     return id;
@@ -79,5 +82,14 @@ public class PersonEntity {
 
   public void setUpdatedAt(Instant updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public Set<AddressEntity> getAddressEntities() {
+    return addressEntities;
+  }
+
+  public void setAddressEntities(
+      Set<AddressEntity> addressEntities) {
+    this.addressEntities = addressEntities;
   }
 }

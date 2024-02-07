@@ -2,6 +2,8 @@ package com.abahafart.userms.infra.controller.response;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 public class PersonResponse {
 
@@ -13,6 +15,7 @@ public class PersonResponse {
   private Instant createdAt;
   private Instant updatedAt;
   private AddressResponse address;
+  private Set<AddressResponse> addressResponses;
 
   public Long getId() {
     return id;
@@ -76,5 +79,14 @@ public class PersonResponse {
 
   public void setAddress(AddressResponse address) {
     this.address = address;
+  }
+
+  public Set<AddressResponse> getAddressResponses() {
+    return addressResponses;
+  }
+
+  public void setAddressResponses(
+      Set<AddressResponse> addressResponses) {
+    this.addressResponses = addressResponses;
   }
 }

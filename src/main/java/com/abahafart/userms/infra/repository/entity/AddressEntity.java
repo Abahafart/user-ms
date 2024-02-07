@@ -93,6 +93,7 @@ public class AddressEntity {
   }
 
   public PersonEntity getPerson() {
+    person.setAddressEntities(null);
     return person;
   }
 

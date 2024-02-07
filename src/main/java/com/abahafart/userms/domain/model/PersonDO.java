@@ -2,6 +2,8 @@ package com.abahafart.userms.domain.model;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 public class PersonDO {
 
@@ -13,6 +15,7 @@ public class PersonDO {
   private Instant createdAt;
   private Instant updatedAt;
   private AddressDO address;
+  private Set<AddressDO> addressList;
 
   public Long getId() {
     return id;
@@ -76,5 +79,13 @@ public class PersonDO {
 
   public void setAddress(AddressDO address) {
     this.address = address;
+  }
+
+  public Set<AddressDO> getAddressList() {
+    return addressList;
+  }
+
+  public void setAddressList(Set<AddressDO> addressList) {
+    this.addressList = addressList;
   }
 }

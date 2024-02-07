@@ -37,7 +37,9 @@ public class PersonRepositoryImpl implements PersonRepository {
 
   @Override
   public PersonDO getById(long id) {
-    return jpaRepository.findById(id).map(generalMapper::fromPersonEntity).orElseThrow(() -> new ResourceNotFoundException(
+    PersonEntity entity = jpaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
         List.of(new Error(String.format(COUNTRY_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE))));
+    PersonDO personDO = generalMapper.fromPersonEntity(entity);
+    return personDO;
   }
 }
