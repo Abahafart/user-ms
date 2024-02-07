@@ -12,6 +12,7 @@ public class PersonResponse {
   private LocalDate birthDate;
   private Instant createdAt;
   private Instant updatedAt;
+  private AddressResponse address;
 
   public Long getId() {
     return id;
@@ -67,5 +68,13 @@ public class PersonResponse {
 
   public void setUpdatedAt(Instant updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public AddressResponse getAddress() {
+    return address;
+  }
+
+  public void setAddress(AddressResponse address) {
+    this.address = address;
   }
 }

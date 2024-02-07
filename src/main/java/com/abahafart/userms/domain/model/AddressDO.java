@@ -12,8 +12,6 @@ public class AddressDO {
   private String state;
   private String zipCode;
   private Instant createdAt;
-  private Long idPerson;
-  private Long idCountry;
   private CountryDO country;
   private PersonDO person;
 
@@ -79,22 +77,6 @@ public class AddressDO {
 
   public void setCreatedAt(Instant createdAt) {
     this.createdAt = createdAt;
-  }
-
-  public Long getIdPerson() {
-    return idPerson;
-  }
-
-  public void setIdPerson(Long idPerson) {
-    this.idPerson = idPerson;
-  }
-
-  public Long getIdCountry() {
-    return idCountry;
-  }
-
-  public void setIdCountry(Long idCountry) {
-    this.idCountry = idCountry;
   }
 
   public CountryDO getCountry() {

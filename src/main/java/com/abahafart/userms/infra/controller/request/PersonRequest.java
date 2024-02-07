@@ -8,6 +8,7 @@ public class PersonRequest {
   private String surname;
   private String fullName;
   private LocalDate birthDate;
+  private AddressRequest address;
 
   public String getName() {
     return name;
@@ -39,5 +40,13 @@ public class PersonRequest {
 
   public void setBirthDate(LocalDate birthDate) {
     this.birthDate = birthDate;
+  }
+
+  public AddressRequest getAddress() {
+    return address;
+  }
+
+  public void setAddress(AddressRequest address) {
+    this.address = address;
   }
 }

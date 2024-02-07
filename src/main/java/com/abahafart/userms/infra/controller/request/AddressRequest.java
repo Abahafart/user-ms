@@ -8,8 +8,7 @@ public class AddressRequest {
   private String municipality;
   private String state;
   private String zipCode;
-  private long idPerson;
-  private long idCountry;
+  private CountryRequest country;
 
   public String getStreet() {
     return street;
@@ -59,19 +58,11 @@ public class AddressRequest {
     this.zipCode = zipCode;
   }
 
-  public long getIdPerson() {
-    return idPerson;
+  public CountryRequest getCountry() {
+    return country;
   }
 
-  public void setIdPerson(long idPerson) {
-    this.idPerson = idPerson;
-  }
-
-  public long getIdCountry() {
-    return idCountry;
-  }
-
-  public void setIdCountry(long idCountry) {
-    this.idCountry = idCountry;
+  public void setCountry(CountryRequest country) {
+    this.country = country;
   }
 }

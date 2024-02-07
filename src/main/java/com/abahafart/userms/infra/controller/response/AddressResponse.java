@@ -13,7 +13,6 @@ public class AddressResponse {
   private String zipCode;
   private Instant createdAt;
   private CountryResponse country;
-  private PersonResponse person;
 
   public long getId() {
     return id;
@@ -85,13 +84,5 @@ public class AddressResponse {
 
   public void setCountry(CountryResponse country) {
     this.country = country;
-  }
-
-  public PersonResponse getPerson() {
-    return person;
-  }
-
-  public void setPerson(PersonResponse person) {
-    this.person = person;
   }
 }

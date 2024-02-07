@@ -14,22 +14,15 @@ import com.abahafart.userms.domain.service.PersonService;
 public class AddressServiceImpl implements AddressService {
 
   private final AddressRepository repository;
-  private final PersonService personService;
-  private final CountryService countryService;
 
-  public AddressServiceImpl(AddressRepository repository, PersonService personService,
-      CountryService countryService) {
+  public AddressServiceImpl(AddressRepository repository) {
     this.repository = repository;
-    this.personService = personService;
-    this.countryService = countryService;
   }
 
   @Override
   public AddressDO create(AddressDO addressDO) {
-    PersonDO personDO = personService.getById(addressDO.getIdPerson());
-    CountryDO countryDO = countryService.getById(addressDO.getIdCountry());
-    addressDO.setCountry(countryDO);
-    addressDO.setPerson(personDO);
+    addressDO.setCountry(addressDO.getCountry());
+    addressDO.setPerson(addressDO.getPerson());
     return repository.create(addressDO);
   }
 
