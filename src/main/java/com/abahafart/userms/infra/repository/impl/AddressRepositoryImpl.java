@@ -30,8 +30,9 @@ public class AddressRepositoryImpl implements AddressRepository {
 
   @Override
   public AddressDO create(AddressDO address) {
-    return generalMapper.fromAddressEntity(addressJPARepository.save(
-        generalMapper.fromAddressModel(address)));
+    AddressEntity entity = generalMapper.fromAddressModel(address);
+    AddressDO saved = generalMapper.fromAddressEntity(addressJPARepository.save(entity));
+    return saved;
   }
 
   @Override

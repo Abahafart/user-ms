@@ -2,11 +2,13 @@ package com.abahafart.userms.infra.repository.entity;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity(name = "tbl_person")
@@ -20,6 +22,8 @@ public class PersonEntity {
   private LocalDate birthDate;
   private Instant createdAt;
   private Instant updatedAt;
+  @OneToMany(mappedBy = "id")
+  private List<AddressEntity> addressEntities;
 
   public Long getId() {
     return id;

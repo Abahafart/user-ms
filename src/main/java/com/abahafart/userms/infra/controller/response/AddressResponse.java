@@ -12,8 +12,6 @@ public class AddressResponse {
   private String state;
   private String zipCode;
   private Instant createdAt;
-  private long idPerson;
-  private long idCountry;
   private CountryResponse country;
   private PersonResponse person;
 
@@ -79,22 +77,6 @@ public class AddressResponse {
 
   public void setCreatedAt(Instant createdAt) {
     this.createdAt = createdAt;
-  }
-
-  public long getIdPerson() {
-    return idPerson;
-  }
-
-  public void setIdPerson(long idPerson) {
-    this.idPerson = idPerson;
-  }
-
-  public long getIdCountry() {
-    return idCountry;
-  }
-
-  public void setIdCountry(long idCountry) {
-    this.idCountry = idCountry;
   }
 
   public CountryResponse getCountry() {

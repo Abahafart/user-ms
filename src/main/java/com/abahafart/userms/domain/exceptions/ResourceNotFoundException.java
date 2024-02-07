@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResourceNotFoundException extends RuntimeException {
 
-  private List<Error> errors;
+  private final List<Error> errors;
 
   public ResourceNotFoundException(Throwable cause, List<Error> errors) {
     super(cause);
