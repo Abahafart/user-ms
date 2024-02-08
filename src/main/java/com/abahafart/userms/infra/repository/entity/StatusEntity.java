@@ -1,5 +1,7 @@
 package com.abahafart.userms.infra.repository.entity;
 
+import java.time.Instant;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +15,7 @@ public class StatusEntity {
   private long id;
   private String description;
   private String type;
-  private String createdAt;
+  private Instant createdAt;
 
   public long getId() {
     return id;
@@ -39,11 +41,11 @@ public class StatusEntity {
     this.type = type;
   }
 
-  public String getCreatedAt() {
+  public Instant getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(Instant createdAt) {
     this.createdAt = createdAt;
   }
 }

@@ -1,6 +1,6 @@
 package com.abahafart.userms.infra.repository.impl;
 
-import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.COUNTRY_NOT_FOUND;
+import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND;
 import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND_CODE;
 
 import java.util.List;
@@ -39,7 +39,7 @@ public class AddressRepositoryImpl implements AddressRepository {
   public AddressDO getById(long id) {
     return generalMapper.fromAddressEntity(
         addressJPARepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
-            List.of(new Error(String.format(COUNTRY_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE)))));
+            List.of(new Error(String.format(RESOURCE_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE)))));
   }
 
   @Override

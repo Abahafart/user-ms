@@ -4,11 +4,20 @@ import java.time.LocalDate;
 
 public class PersonRequest {
 
+  private Long id;
   private String name;
   private String surname;
   private String fullName;
   private LocalDate birthDate;
   private AddressRequest address;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getName() {
     return name;

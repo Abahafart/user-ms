@@ -1,6 +1,6 @@
 package com.abahafart.userms.infra.repository.impl;
 
-import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.COUNTRY_NOT_FOUND;
+import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND;
 import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND_CODE;
 
 import java.time.Instant;
@@ -40,6 +40,6 @@ public class CountryRepositoryImpl implements CountryRepository {
   public CountryDO getById(Long id) {
     return generalMapper.fromCountryEntity(
         countryJPARepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
-            List.of(new Error(String.format(COUNTRY_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE)))));
+            List.of(new Error(String.format(RESOURCE_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE)))));
   }
 }

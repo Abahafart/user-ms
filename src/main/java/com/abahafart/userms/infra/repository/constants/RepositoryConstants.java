@@ -4,6 +4,7 @@ public class RepositoryConstants {
 
   private RepositoryConstants(){}
 
-  public static final String COUNTRY_NOT_FOUND = "Resource with id %s not found";
+  public static final String RESOURCE_NOT_FOUND = "Resource with id %s not found";
   public static final int RESOURCE_NOT_FOUND_CODE = -1;
+  public static final String STATUS_NOT_FOUND = "Status with %s and %s not found";
 }
