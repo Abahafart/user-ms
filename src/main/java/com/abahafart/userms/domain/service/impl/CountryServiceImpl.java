@@ -1,10 +1,9 @@
 package com.abahafart.userms.domain.service.impl;
 
-import org.springframework.stereotype.Service;
-
 import com.abahafart.userms.domain.model.CountryDO;
 import com.abahafart.userms.domain.repository.CountryRepository;
 import com.abahafart.userms.domain.service.CountryService;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CountryServiceImpl implements CountryService {

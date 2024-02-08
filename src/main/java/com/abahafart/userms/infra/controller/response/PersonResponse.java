@@ -2,7 +2,6 @@ package com.abahafart.userms.infra.controller.response;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 public class PersonResponse {
@@ -85,8 +84,7 @@ public class PersonResponse {
     return addressResponses;
   }
 
-  public void setAddressResponses(
-      Set<AddressResponse> addressResponses) {
+  public void setAddressResponses(Set<AddressResponse> addressResponses) {
     this.addressResponses = addressResponses;
   }
 }

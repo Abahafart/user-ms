@@ -1,9 +1,7 @@
 package com.abahafart.userms.domain.service.impl;
 
-import static com.abahafart.userms.domain.service.ServiceConstants.ACTIVE;
-import static com.abahafart.userms.domain.service.ServiceConstants.USER;
-
-import org.springframework.stereotype.Service;
+import static com.abahafart.userms.domain.service.constant.ServiceConstants.ACTIVE;
+import static com.abahafart.userms.domain.service.constant.ServiceConstants.USER;
 
 import com.abahafart.userms.domain.model.PersonDO;
 import com.abahafart.userms.domain.model.StatusDO;
@@ -12,6 +10,7 @@ import com.abahafart.userms.domain.repository.PersonRepository;
 import com.abahafart.userms.domain.repository.StatusRepository;
 import com.abahafart.userms.domain.repository.UserRepository;
 import com.abahafart.userms.domain.service.UserService;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,7 +19,9 @@ public class UserServiceImpl implements UserService {
   private final PersonRepository personRepository;
   private final StatusRepository statusRepository;
 
-  public UserServiceImpl(UserRepository userRepository, PersonRepository personRepository,
+  public UserServiceImpl(
+      UserRepository userRepository,
+      PersonRepository personRepository,
       StatusRepository statusRepository) {
     this.userRepository = userRepository;
     this.personRepository = personRepository;

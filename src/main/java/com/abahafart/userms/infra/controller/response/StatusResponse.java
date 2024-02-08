@@ -1,8 +1,7 @@
 package com.abahafart.userms.infra.controller.response;
 
-import java.time.Instant;
-
 import com.abahafart.userms.infra.controller.request.StatusType;
+import java.time.Instant;
 
 public class StatusResponse {
 

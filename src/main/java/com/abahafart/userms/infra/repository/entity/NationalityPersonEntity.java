@@ -1,13 +1,12 @@
 package com.abahafart.userms.infra.repository.entity;
 
-import java.time.Instant;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.time.Instant;
 
 @Entity(name = "tbl_nationality")
 public class NationalityPersonEntity {
@@ -15,11 +14,14 @@ public class NationalityPersonEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
+
   private Instant createdAt;
   private Instant updatedAt;
+
   @ManyToOne
   @JoinColumn(name = "person_id")
   private PersonEntity personEntity;
+
   @ManyToOne
   @JoinColumn(name = "country_id")
   private CountryEntity country;

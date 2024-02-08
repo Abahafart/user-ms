@@ -1,14 +1,12 @@
 package com.abahafart.userms.infra.repository.entity;
 
-import java.time.Instant;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import java.time.Instant;
 
 @Entity(name = "tbl_user")
 public class UserEntity {
@@ -16,14 +14,17 @@ public class UserEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
+
   private String userName;
   private String password;
   private String email;
   private Instant createdAt;
   private Instant updatedAt;
+
   @OneToOne
   @JoinColumn(name = "status_id")
   private StatusEntity status;
+
   @OneToOne
   @JoinColumn(name = "person_id")
   private PersonEntity person;

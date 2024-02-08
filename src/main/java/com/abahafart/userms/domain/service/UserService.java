@@ -5,6 +5,6 @@ import com.abahafart.userms.domain.model.UserDO;
 public interface UserService {
 
   UserDO create(UserDO userDO);
-  UserDO getById(String id);
 
+  UserDO getById(String id);
 }

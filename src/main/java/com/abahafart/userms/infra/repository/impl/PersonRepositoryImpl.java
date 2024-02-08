@@ -3,11 +3,6 @@ package com.abahafart.userms.infra.repository.impl;
 import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND;
 import static com.abahafart.userms.infra.repository.constants.RepositoryConstants.RESOURCE_NOT_FOUND_CODE;
 
-import java.time.Instant;
-import java.util.List;
-
-import org.springframework.stereotype.Repository;
-
 import com.abahafart.userms.domain.exceptions.Error;
 import com.abahafart.userms.domain.exceptions.ResourceNotFoundException;
 import com.abahafart.userms.domain.model.PersonDO;
@@ -15,6 +10,9 @@ import com.abahafart.userms.domain.repository.PersonRepository;
 import com.abahafart.userms.infra.mapper.GeneralMapper;
 import com.abahafart.userms.infra.repository.PersonJPARepository;
 import com.abahafart.userms.infra.repository.entity.PersonEntity;
+import java.time.Instant;
+import java.util.List;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class PersonRepositoryImpl implements PersonRepository {
@@ -37,8 +35,15 @@ public class PersonRepositoryImpl implements PersonRepository {
 
   @Override
   public PersonDO getById(long id) {
-    PersonEntity entity = jpaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
-        List.of(new Error(String.format(RESOURCE_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE))));
+    PersonEntity entity =
+        jpaRepository
+            .findById(id)
+            .orElseThrow(
+                () ->
+                    new ResourceNotFoundException(
+                        List.of(
+                            new Error(
+                                String.format(RESOURCE_NOT_FOUND, id), RESOURCE_NOT_FOUND_CODE))));
     return generalMapper.fromPersonEntity(entity);
   }
 }

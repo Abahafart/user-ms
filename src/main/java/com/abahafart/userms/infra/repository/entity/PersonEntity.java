@@ -1,10 +1,5 @@
 package com.abahafart.userms.infra.repository.entity;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,19 +7,24 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Set;
 
 @Entity(name = "tbl_person")
 public class PersonEntity {
 
-  @Id @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
+
   private String name;
   private String surname;
   private String fullName;
   private LocalDate birthDate;
   private Instant createdAt;
   private Instant updatedAt;
+
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL)
   private Set<AddressEntity> addressEntities;
 
@@ -88,8 +88,7 @@ public class PersonEntity {
     return addressEntities;
   }
 
-  public void setAddressEntities(
-      Set<AddressEntity> addressEntities) {
+  public void setAddressEntities(Set<AddressEntity> addressEntities) {
     this.addressEntities = addressEntities;
   }
 }

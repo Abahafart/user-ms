@@ -1,8 +1,5 @@
 package com.abahafart.userms.infra.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-
 import com.abahafart.userms.domain.model.AddressDO;
 import com.abahafart.userms.domain.model.CountryDO;
 import com.abahafart.userms.domain.model.PersonDO;
@@ -21,6 +18,8 @@ import com.abahafart.userms.infra.repository.entity.CountryEntity;
 import com.abahafart.userms.infra.repository.entity.PersonEntity;
 import com.abahafart.userms.infra.repository.entity.StatusEntity;
 import com.abahafart.userms.infra.repository.entity.UserEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper
 public interface GeneralMapper {
@@ -58,6 +57,6 @@ public interface GeneralMapper {
   UserResponse fromUserDOToResponse(UserDO userDO);
 
   UserDO fromUserEntity(UserEntity entity);
-  StatusDO fromStatusEntity(StatusEntity entity);
 
+  StatusDO fromStatusEntity(StatusEntity entity);
 }

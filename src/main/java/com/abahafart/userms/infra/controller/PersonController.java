@@ -1,17 +1,16 @@
 package com.abahafart.userms.infra.controller;
 
+import com.abahafart.userms.domain.model.PersonDO;
+import com.abahafart.userms.domain.service.PersonService;
+import com.abahafart.userms.infra.controller.request.PersonRequest;
+import com.abahafart.userms.infra.controller.response.PersonResponse;
+import com.abahafart.userms.infra.mapper.GeneralMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.abahafart.userms.domain.model.PersonDO;
-import com.abahafart.userms.domain.service.PersonService;
-import com.abahafart.userms.infra.controller.request.PersonRequest;
-import com.abahafart.userms.infra.controller.response.PersonResponse;
-import com.abahafart.userms.infra.mapper.GeneralMapper;
 
 @RestController
 @RequestMapping(value = "/persons")

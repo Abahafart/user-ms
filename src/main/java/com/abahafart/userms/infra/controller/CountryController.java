@@ -1,5 +1,10 @@
 package com.abahafart.userms.infra.controller;
 
+import com.abahafart.userms.domain.model.CountryDO;
+import com.abahafart.userms.domain.service.CountryService;
+import com.abahafart.userms.infra.controller.request.CountryRequest;
+import com.abahafart.userms.infra.controller.response.CountryResponse;
+import com.abahafart.userms.infra.mapper.GeneralMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,16 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abahafart.userms.domain.model.CountryDO;
-import com.abahafart.userms.domain.service.CountryService;
-import com.abahafart.userms.infra.controller.request.CountryRequest;
-import com.abahafart.userms.infra.controller.response.CountryResponse;
-import com.abahafart.userms.infra.mapper.GeneralMapper;
-
 @RestController
 @RequestMapping(value = "/countries")
 public class CountryController {
-  public static final Logger log =  LoggerFactory.getLogger(CountryController.class);
+  public static final Logger log = LoggerFactory.getLogger(CountryController.class);
   private final CountryService countryService;
   private final GeneralMapper generalMapper;
 

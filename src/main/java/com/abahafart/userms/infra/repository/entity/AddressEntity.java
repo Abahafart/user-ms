@@ -1,19 +1,19 @@
 package com.abahafart.userms.infra.repository.entity;
 
-import java.time.Instant;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.time.Instant;
 
 @Entity(name = "tbl_address")
 public class AddressEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
+
   private String street;
   private String number;
   private String neighborhood;
@@ -21,9 +21,11 @@ public class AddressEntity {
   private String state;
   private String zipCode;
   private Instant createdAt;
+
   @ManyToOne
   @JoinColumn(name = "person_id")
   private PersonEntity person;
+
   @ManyToOne
   @JoinColumn(name = "country_id")
   private CountryEntity country;
