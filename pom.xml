@@ -16,6 +16,8 @@
   <description>user-ms</description>
   <properties>
     <java.version>21</java.version>
+    <spring-cloud.version>2022.0.3</spring-cloud.version>
+    <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
   </properties>
   <dependencies>
     <dependency>
@@ -34,6 +36,29 @@
       <groupId>org.apache.kafka</groupId>
       <artifactId>kafka-streams</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-core</artifactId>
+    </dependency>
+
 
     <dependency>
       <groupId>org.postgresql</groupId>
@@ -70,7 +95,38 @@
       <artifactId>postgresql</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-stream-test-binder</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.archunit</groupId>
+      <artifactId>archunit-junit5</artifactId>
+      <version>1.2.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jeasy</groupId>
+      <artifactId>easy-random-core</artifactId>
+      <version>5.0.0</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <plugins>
@@ -81,6 +137,26 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <release>${java.version}</release>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <parameters>true</parameters>
+          <testCompilerArgument>-parameters</testCompilerArgument>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>${org.mapstruct.version}</version>
+            </path>
+          </annotationProcessorPaths>
+          <compilerArgs><arg>-Amapstruct.defaultComponentModel=spring</arg></compilerArgs>
+        </configuration>
       </plugin>
     </plugins>
   </build>
