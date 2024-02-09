@@ -11,6 +11,8 @@ import com.abahafart.userms.domain.repository.AddressRepository;
 import com.abahafart.userms.infra.mapper.GeneralMapper;
 import com.abahafart.userms.infra.repository.AddressJPARepository;
 import com.abahafart.userms.infra.repository.entity.AddressEntity;
+
+import java.time.Instant;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
@@ -29,8 +31,8 @@ public class AddressRepositoryImpl implements AddressRepository {
   @Override
   public AddressDO create(AddressDO address) {
     AddressEntity entity = generalMapper.fromAddressModel(address);
-    AddressDO saved = generalMapper.fromAddressEntity(addressJPARepository.save(entity));
-    return saved;
+    entity.setCreatedAt(Instant.now());
+    return generalMapper.fromAddressEntity(addressJPARepository.save(entity));
   }
 
   @Override

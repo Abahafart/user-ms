@@ -10,7 +10,7 @@ import java.time.Instant;
 public class StatusEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
   private String description;

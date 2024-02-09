@@ -10,6 +10,8 @@ import com.abahafart.userms.domain.repository.UserRepository;
 import com.abahafart.userms.infra.mapper.GeneralMapper;
 import com.abahafart.userms.infra.repository.UserJPARepository;
 import com.abahafart.userms.infra.repository.entity.UserEntity;
+
+import java.time.Instant;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +29,7 @@ public class UserRepositoryImpl implements UserRepository {
   @Override
   public UserDO create(UserDO userDO) {
     UserEntity entity = generalMapper.fromUserDO(userDO);
+    entity.setCreatedAt(Instant.now());
     return generalMapper.fromUserEntity(jpaRepository.save(entity));
   }
 

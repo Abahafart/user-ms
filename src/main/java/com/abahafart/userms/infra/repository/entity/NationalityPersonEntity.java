@@ -12,11 +12,10 @@ import java.time.Instant;
 public class NationalityPersonEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
   private Instant createdAt;
-  private Instant updatedAt;
 
   @ManyToOne
   @JoinColumn(name = "person_id")
@@ -40,14 +39,6 @@ public class NationalityPersonEntity {
 
   public void setCreatedAt(Instant createdAt) {
     this.createdAt = createdAt;
-  }
-
-  public Instant getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(Instant updatedAt) {
-    this.updatedAt = updatedAt;
   }
 
   public PersonEntity getPersonEntity() {
