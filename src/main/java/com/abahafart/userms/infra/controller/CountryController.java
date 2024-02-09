@@ -28,8 +28,10 @@ public class CountryController {
 
   @PostMapping
   public CountryResponse createCountry(@RequestBody CountryRequest request) {
+    long started = System.currentTimeMillis();
     log.info("Request received {}", request);
     CountryDO countryDO = generalMapper.fromCountryRequest(request);
+    log.info("Finished process {}",System.currentTimeMillis()-started);
     return generalMapper.fromCountryDO(countryService.create(countryDO));
   }
 
