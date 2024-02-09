@@ -10,6 +10,8 @@ import com.abahafart.userms.domain.repository.StatusRepository;
 import com.abahafart.userms.infra.mapper.GeneralMapper;
 import com.abahafart.userms.infra.repository.StatusJPARepository;
 import com.abahafart.userms.infra.repository.entity.StatusEntity;
+
+import java.time.Instant;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
@@ -37,5 +39,17 @@ public class StatusRepositoryImpl implements StatusRepository {
                                 String.format(STATUS_NOT_FOUND, description, type),
                                 RESOURCE_NOT_FOUND_CODE))));
     return generalMapper.fromStatusEntity(entity);
+  }
+
+  @Override
+  public StatusDO create(StatusDO statusDO) {
+    StatusEntity entity = generalMapper.fromStatusDO(statusDO);
+    entity.setCreatedAt(Instant.now());
+    return generalMapper.fromStatusEntity(jpaRepository.save(entity));
+  }
+
+  @Override
+  public List<StatusDO> getAll() {
+    return jpaRepository.findAll().stream().map(generalMapper::fromStatusEntity).toList();
   }
 }

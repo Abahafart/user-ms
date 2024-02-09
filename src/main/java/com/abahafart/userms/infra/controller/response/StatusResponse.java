@@ -1,13 +1,12 @@
 package com.abahafart.userms.infra.controller.response;
 
-import com.abahafart.userms.infra.controller.request.StatusType;
 import java.time.Instant;
 
 public class StatusResponse {
 
   private Long id;
   private String description;
-  private StatusType type;
+  private String type;
   private Instant createdAt;
 
   public Long getId() {
@@ -26,11 +25,11 @@ public class StatusResponse {
     this.description = description;
   }
 
-  public StatusType getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(StatusType type) {
+  public void setType(String type) {
     this.type = type;
   }
 

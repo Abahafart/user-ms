@@ -3,7 +3,7 @@ package com.abahafart.userms.infra.controller.request;
 public class StatusRequest {
 
   private String description;
-  private StatusType type;
+  private String type;
 
   public String getDescription() {
     return description;
@@ -13,11 +13,11 @@ public class StatusRequest {
     this.description = description;
   }
 
-  public StatusType getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(StatusType type) {
+  public void setType(String type) {
     this.type = type;
   }
 }

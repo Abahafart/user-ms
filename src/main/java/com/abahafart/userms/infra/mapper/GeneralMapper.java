@@ -8,10 +8,12 @@ import com.abahafart.userms.domain.model.UserDO;
 import com.abahafart.userms.infra.controller.request.AddressRequest;
 import com.abahafart.userms.infra.controller.request.CountryRequest;
 import com.abahafart.userms.infra.controller.request.PersonRequest;
+import com.abahafart.userms.infra.controller.request.StatusRequest;
 import com.abahafart.userms.infra.controller.request.UserRequest;
 import com.abahafart.userms.infra.controller.response.AddressResponse;
 import com.abahafart.userms.infra.controller.response.CountryResponse;
 import com.abahafart.userms.infra.controller.response.PersonResponse;
+import com.abahafart.userms.infra.controller.response.StatusResponse;
 import com.abahafart.userms.infra.controller.response.UserResponse;
 import com.abahafart.userms.infra.repository.entity.AddressEntity;
 import com.abahafart.userms.infra.repository.entity.CountryEntity;
@@ -59,4 +61,7 @@ public interface GeneralMapper {
   UserDO fromUserEntity(UserEntity entity);
 
   StatusDO fromStatusEntity(StatusEntity entity);
+  StatusEntity fromStatusDO(StatusDO statusDO);
+  StatusDO fromStatusRequest(StatusRequest request);
+  StatusResponse fromStatusResponse(StatusDO statusDO);
 }

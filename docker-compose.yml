@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pa55word #use mitsborn_default as network
+
+  kafka-cluster:
+    image: landoop/fast-data-dev:latest
+    environment:
+      ADV_HOST: 127.0.0.1
+      RUNTESTS: 0
+      FORWARDLOGS: 0
+      SAMPLEDATA: 0
+    ports:
+      - 2181:2181                 # Zookeeper port
+      - 3030:3030                 # Landoop UI port
+      - 8081-8083:8081-8083       # REST Proxy, Schema Registry, Kafka Connect ports
+      - 9581-9585:9581-9585       # JMX Ports
+      - 9092:9092                 # Kafka Broker port
+
+  cache:
+    image: redis:latest
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass pa55word
+    volumes:
+      - cache:/data
+  library-user-service:
+    image: postgres:15.2-alpine3.17
+    environment:
+      - POSTGRES_USER=user-library
+      - POSTGRES_PASSWORD=myPasswordUserLibrary#3
+      - POSTGRES_DB=user_library
+    ports:
+      - "3333:5432"
+  library-user:
+    image: library-user-ms:1.0.0
+    ports:
+      - '10091:8080'
+    environment:
+      - SPRING.DATASOURCE.DRIVERCLASSNAME=org.postgresql.Driver
+      - SPRING.DATASOURCE.USERNAME=user-library
+      - SPRING.DATASOURCE.PASSWORD=myPasswordUserLibrary#3
+      - SPRING.DATASOURCE.URL=jdbc:postgresql://library-user-service:5432/user_library
+      - SPRING.JPA.SHOW-SQL=true
+      - SPRING.CLOUD.STREAM.KAFKA.BINDER.BROKERS=kafka-cluster:9092
+    depends_on:
+      - library-user-service
+      - kafka-cluster
+    
+volumes:
+  cache:
+    driver: local
